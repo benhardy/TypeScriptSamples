@@ -266,7 +266,7 @@ function defaultScene(): Scene {
 
 function exec() {
     var canv = document.createElement("canvas");
-    canv.width = 256;
+    canv.width = 341;
     canv.height = 256;
     document.body.appendChild(canv);
     var ctx = canv.getContext("2d");
