@@ -234,9 +234,10 @@ class RayTracer {
     }
 
     render(scene, ctx, screenWidth, screenHeight) {
+        var aspectRatio = screenHeight * 1.0 / screenWidth;
         var getPoint = (x, y, camera) => {
             var recenterX = x =>(x - (screenWidth / 2.0)) / 2.0 / screenWidth;
-            var recenterY = y => - (y - (screenHeight / 2.0)) / 2.0 / screenHeight;
+            var recenterY = y => - (y - aspectRatio * (screenHeight / 2.0)) / 2.0 / screenWidth;
             return Vector.norm(Vector.plus(camera.forward, Vector.plus(Vector.times(recenterX(x), camera.right), Vector.times(recenterY(y), camera.up))));
         }
         for (var y = 0; y < screenHeight; y++) {
